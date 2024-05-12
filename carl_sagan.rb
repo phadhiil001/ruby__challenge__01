@@ -49,6 +49,8 @@ puts"#{carl[:words][2].capitalize()} #{sagan[0][:are]} #{sagan[0]["A"]} #{sagan[
  end
 
 
+# QUESTION 3
+
 require 'net/http'
 require 'json'
 require 'pp'
