@@ -80,8 +80,8 @@ breeds_data.each {
 require 'net/http'
 require 'json'
 
-url = 'https://data.winnipeg.ca/resource/d3jk-hb6j.json'
-# url = 'https://data.winnipeg.ca/resource/d3jk-hb6j.json?$limit=306000'
+# url = 'https://data.winnipeg.ca/resource/d3jk-hb6j.json'
+url = 'https://data.winnipeg.ca/resource/d3jk-hb6j.json?$limit=306000'
 uri = URI(url)
 response = Net::HTTP.get(uri)
 tree_data = JSON.parse(response)
