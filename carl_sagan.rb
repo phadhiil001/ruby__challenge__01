@@ -33,6 +33,7 @@ puts"#{carl[:words][2].capitalize()} #{sagan[0][:are]} #{sagan[0]["A"]} #{sagan[
 
 
 # QUESTION 2
+
  ghosts = [
     {:name => 'Inky', :age => '4', :loves => 'reindeers', :net_worth => '25'},
     {:name => 'Pinky', :age => '5', :loves => 'garden tools', :net_worth => '14'},
@@ -59,10 +60,11 @@ url = 'https://dog.ceo/api/breeds/list/all'
 uri = URI(url)
 response = Net::HTTP.get(uri)
 dog_breeds = JSON.parse(response) # Convert JSON data into Ruby data.
-pp dog_breeds # pp stands for pretty print.
+# pp dog_breeds # pp stands for pretty print.
 
+breeds_data = dog_breeds['message']
 
-dog_breeds['message'].each {
+breeds_data.each {
     |breed, sub_breeds|
     puts "* #{breed.capitalize}"
 
@@ -72,4 +74,25 @@ dog_breeds['message'].each {
     }
 }
 
+
+# QUESTION 4
+
+require 'net/http'
+require 'json'
+
+url = 'https://data.winnipeg.ca/resource/d3jk-hb6j.json'
+# url = 'https://data.winnipeg.ca/resource/d3jk-hb6j.json?$limit=306000'
+uri = URI(url)
+response = Net::HTTP.get(uri)
+tree_data = JSON.parse(response)
+
+ash_tree_count = 0
+
+tree_data.each do |tree|
+  if tree['common_name']&.downcase&.include?('ash') || tree['botanical_name']&.downcase&.include?('ash')
+    ash_tree_count += 1
+  end
+end
+
+puts "Total number of Ash trees = #{ash_tree_count}"
 
